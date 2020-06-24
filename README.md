@@ -21,6 +21,8 @@ Why and What?
 Alura is a Brazilian online platform that provide +1000 courses in portuguese for those that subscribe to the platform.
 However during the COVID-19 quarentine their decide to provide for free a series of online courses (workshops), and this project is the result of one of those.
 
+**Playlist with the classes in Portuguese:** 
+https://www.youtube.com/playlist?list=PL0zISf7k8dOysau7ciZ7iz5aV2XzQqb5F 
 
 ## Authors
 
