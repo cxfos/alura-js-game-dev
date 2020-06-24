@@ -23,8 +23,8 @@ However during the COVID-19 quarentine their decide to provide for free a series
 
 **Alura Classes (I don't know for how long will be available)**
 
-* 1st Classe: https://www.alura.com.br/imersao-gamedev-javascript/aula01-game-personagem-animacao
-* 2nd Classe: https://www.alura.com.br/imersao-gamedev-javascript/aula02-inimigo-movimentacao-e-gravidade
+* 1st class: https://www.alura.com.br/imersao-gamedev-javascript/aula01-game-personagem-animacao
+* 2nd class: https://www.alura.com.br/imersao-gamedev-javascript/aula02-inimigo-movimentacao-e-gravidade
 
 **Playlist with the classes in Portuguese:** 
 https://www.youtube.com/playlist?list=PL0zISf7k8dOysau7ciZ7iz5aV2XzQqb5F 
