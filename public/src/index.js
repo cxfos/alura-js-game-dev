@@ -1,30 +1,64 @@
 let cenario;
-let imagemCenario;
-let imagemPersonagem;
-let personagem;
-let somDoJogo;
+let imgCenario;
+let imgGota;
+let imgLuna;
+let gota;
+let luna;
+let somJogo;
+let somPulo;
+let spriteGota;
+let spriteLuna;
 
 function preload() {
-    imagemCenario = loadImage('imagens/cenario/floresta.png');
-    imagemPersonagem = loadImage('imagens/personagem/correndo.png');
-    somDoJogo = loadSound('sons/trilha_jogo.mp3');
+    imgCenario = loadImage('imagens/cenario/floresta.png');
+    imgLuna = loadImage('imagens/personagem/correndo.png');
+    imgGota = loadImage('imagens/inimigos/gotinha.png');
+    somJogo = loadSound('sons/trilha_jogo.mp3');
+    somPulo = loadSound('sons/somPulo.mp3');
 }
 
 function setup() {
     getAudioContext().suspend();
-    frameRate(30);
+    frameRate(32);
     createCanvas(windowWidth, windowHeight);
-    cenario = getCenario(imagemCenario, 5);
-    personagem = getPersonagem(imagemPersonagem, 4, 4);
-    somDoJogo.loop();
+    cenario = getCenario(imgCenario, 10);
+
+    spriteLuna = getSprite(imgLuna, 4, 4)
+    luna = getAnimacao(spriteLuna, 110, 135, 25, height - 135);
+
+    spriteGota = getSprite(imgGota, 4, 7)
+    gota = getAnimacao(spriteGota, 52, 52, width -52 , height - 52);
+
+    somJogo.loop();
 }
 
 function draw() {
     cenario.exibe();
     cenario.move();
-    personagem.exibe();
+
+    luna.show();
+    luna.gravityPull();
+
+    gota.show();
+    gota.moveXToLeft(14);
+
+    if (luna.isColliding(gota.getAnimationProps())) {
+        noLoop();
+    }
 }
 
 function mousePressed() {
     userStartAudio();
+}
+
+function keyPressed(keybordEvent) {
+    const { code } = keybordEvent
+    switch (code) {
+        case 'Space':
+        case 'ArrowUp':
+        case 'KeyW':
+            luna.jump(30, somPulo);
+        break;
+        default: {}
+    }
 }
