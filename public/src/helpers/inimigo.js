@@ -1,8 +1,8 @@
-function getPersonagem(sprite, charWidth, charHeight, xPosition, yPosition) {
+function getInimigo(sprite, inimWidth, inimHeight, xPosition, yPosition) {
     const animacao = getAnimacao(
         sprite,
-        charWidth,
-        charHeight,
+        inimWidth,
+        inimHeight,
         xPosition,
         yPosition
     );

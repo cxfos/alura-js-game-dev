@@ -24,6 +24,8 @@ However during the COVID-19 quarentine their decide to provide for free a series
 
 ## Authors
 
-* Developer: Felipe Oliveira dos Santos
-I am a Web Developer living and working in Winnipeg/MB - Canada, I was born and lived most part of my life in Brazil and moved to Canada when an opportunity was presented.
-I like to expand my knowledge always and since I never have developed a game before decided to study this from the basics.
+* Felipe Oliveira dos Santos:
+
+I am a Web Developer living and working in Winnipeg/MB - Canada. Born and raised in Brazil and moved to Canada at the end of 2018 when a job opportunity was presented.
+
+I enjoy expanding my knowledge and since I never have developed a game before decided to study this from the basics.
