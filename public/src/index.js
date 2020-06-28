@@ -8,6 +8,7 @@ function setup() {
     loadStartComponents();
     loadPlayerCharacter();
     loadEnemies();
+    loadGameOverComponents();
     // somJogo.loop();
 }
 

@@ -1,9 +1,18 @@
 
+function loadGameOverComponents() {
+    const onClick = () => {
+        resetCounters();
+        currentScene = 'home';
+    };
+    buttonRestart = getButton('Retry', xCenter, yCenter + (yCenter / 2), 100, 50, 15, onClick);
+}
+
 function gameOver() {
     cenario.showScene();
     luna.show();
     enemies[currentEnemyIndex].show();
     image(imgGameOver, xCenter - (imgGameOver.width / 2), yCenter - (imgGameOver.height / 2));
+    buttonRestart.showButton();
 }
 
 function onGameOverKeyPressed(keybordEvent) {
@@ -17,7 +26,6 @@ function onGameOverKeyPressed(keybordEvent) {
     }
 }
 
-function onGameOverMousePressed(mouseEvent) {
-    resetCounters();
-    currentScene = 'home';
+function onGameOverMousePressed() {
+    buttonRestart.mouseClicked();
 }

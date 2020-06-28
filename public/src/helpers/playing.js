@@ -1,28 +1,42 @@
 
 function playing() {
     cenario.showScene();
-    cenario.moveSceneXToLeft(getLvlSpeed(baseSpeed));
+    cenario.moveSceneXToLeft(getLvlSpeed(100));
 
     luna.show();
     luna.animate();
     luna.gravityPull();
+    life.drawLife();
 
     if (showEnemy) {
+        const currentMap = enemiesMap[currentEnemyMap];
+        currentEnemyIndex = currentMap.index;
         const enemy = enemies[currentEnemyIndex];
         enemy.show();
         enemy.animate();
-        enemy.moveXToLeft(getLvlSpeed(baseSpeed));
+        enemy.moveXToLeft(getLvlSpeed(currentMap.speedMod));
 
-        if (luna.isColliding(enemy.getAnimationProps())) {
+        if (!wasEnemyCollided && luna.isColliding(enemy.getAnimationProps())) {
             if (isDebugging) {
                 debuggingInfo.setCollisionInfo(enemy);
             }
-            currentScene = 'gameOver';
+
+            life.loseLife();
+            wasEnemyCollided = true;
+
+            if (life.isDead()) {
+                currentScene = 'gameOver';
+            } else {
+                luna.startBlink();
+            }
         }
         if (enemy.isOutLeft()) {
+            luna.stopBlink();
             showEnemy = false;
+            wasEnemyCollided = false;
             msCurrentEmeny = milisecondsCount;
-            currentEnemyIndex = Math.floor(random(0, enemies.length));
+            currentEnemyMap++;
+            currentEnemyMap = currentEnemyMap > enemiesMap.length - 1 ? 0 : currentEnemyMap;
         }
     } else {
         showEnemy = ((milisecondsCount - msCurrentEmeny) > msBetweenEnemies);

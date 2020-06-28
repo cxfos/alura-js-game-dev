@@ -42,25 +42,26 @@ let somPulo;
 const enemies = [];
 const collisionPrecision = 0.55;
 const gravity = 2.6;
-let isDebugging = true;
+let isDebugging = false;
 let debuggingInfo;
 let xCenter = 0;
 let yCenter = 0;
 let framesPerSecond = 32;
 let frameCount = 0;
 let secondsCount = 0;
-let millisecondsCount = 0;
+let milisecondsCount = 0;
 let pointsCount = 0;
-let pointsPerLevel = 500;
-let pointsPerWidth = 100;
-let pxPerPoint = 0;
+let pointsPerSecond = 20;
+let msPerPoint = 0;
 let totalPxMoved = 0;
-let baseSpeed = 1500;
 let currentScene = 'home';
 let currentLevel = 1;
-let levelFactor = 10;
+let levelMap = [];
 let showEnemy = true;
+let wasEnemyCollided = false;
 let currentEnemyIndex = 0;
+let enemiesMap = [];
+let currentEnemyMap = 0;
 let msCurrentEmeny = 0
 let msBetweenEnemies = 2000;
 let sceneActions = {
@@ -85,6 +86,8 @@ let sceneActions = {
 const srcFonteInicio = 'imagens/assets/fonteTelaInicial.otf';
 let fontInicio;
 let buttonStart;
+let buttonRestart;
+let life;
 
 function preload() {
     imgCenario = loadImage(srcCenario);
