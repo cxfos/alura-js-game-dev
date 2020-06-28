@@ -1,22 +1,29 @@
 function setup() {
     setupGameConfiguration();
     cenario = getCenario(imgCenario);
+    if (isDebugging) {
+        debuggingInfo = getDebugging();
+    }
 
+    loadStartComponents();
     loadPlayerCharacter();
     loadEnemies();
     // somJogo.loop();
 }
 
 function draw() {
-    switch (currentScene) {
-        case 'playing' :
-            playing();
-            break;
-        case 'gameOver':
-            gameOver();
-            break;
-        default:
-            noLoop();
-            break;
+    sceneActions[currentScene].draw();
+    if (isDebugging) {
+        debuggingInfo.draw();
     }
+}
+
+function mousePressed(mouseEvent) {
+    userStartAudio();
+    sceneActions[currentScene].mouse(mouseEvent);
+}
+
+function keyPressed(keybordEvent) {
+    userStartAudio();
+    sceneActions[currentScene].keyboard(keybordEvent);
 }

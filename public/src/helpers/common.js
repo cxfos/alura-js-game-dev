@@ -23,8 +23,8 @@ function incrementCounters() {
     totalPxMoved = totalPxMoved + getLvlSpeed(baseSpeed);
     pointsCount = Math.floor(totalPxMoved / pxPerPoint);
     currentLevel = Math.floor(pointsCount / pointsPerLevel) + 1;
-    if (isDebbuging) {
-        console.info('counters',
+    if (isDebugging) {
+        debuggingInfo.setCounterInfo(
             {
                 lvl: currentLevel,
                 pts: pointsCount,
