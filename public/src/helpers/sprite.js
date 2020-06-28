@@ -1,4 +1,6 @@
-function getSprite(imagem, xSpritesCount, ySpritesCount) {
+function getSprite(imagem, xSpritesCount, ySpritesCount, total = null) {
+    const hasTotal = total !== undefined && total !== null;
+    const countTotal = hasTotal ? total : (xSpritesCount * ySpritesCount);
     const {width: imgWidth, height: imgHeight} = imagem;
     const widthSprite = imgWidth / xSpritesCount;
     const heightSprite = imgHeight / ySpritesCount;
@@ -13,7 +15,9 @@ function getSprite(imagem, xSpritesCount, ySpritesCount) {
             yPos = y === 0 ? 0 : yPos + heightSprite;
             for (x = 0; x < xSpritesCount; x++) {
                 xPos = x === 0 ? 0 : xPos + widthSprite;
-                matriz.push({startX: xPos, startY: yPos});
+                if (matriz.length < (countTotal - 1)) {
+                    matriz.push({startX: xPos, startY: yPos});
+                }
             }
         }
         return matriz;
