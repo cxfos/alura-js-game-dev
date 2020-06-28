@@ -7,9 +7,9 @@ function getAnimation(
     name
 ) {
     const {imagem, imagens, widthSprite, heightSprite} = sprite;
-    let imagemAtual = 0;
     let xPos = xPosition;
     let yPos = yPosition;
+    let imagemAtual = 0;
     let heightVariation = 0;
     let jumpCount = 0;
 
@@ -32,6 +32,14 @@ function getAnimation(
 
     function getAnimationProps() {
         return {xPos, yPos, widthAnimation, heightAnimation};
+    }
+
+    function resetAnimation() {
+        xPos = xPosition;
+        yPos = yPosition;
+        imagemAtual = 0;
+        heightVariation = 0;
+        jumpCount = 0;
     }
 
     function animate() {
@@ -84,20 +92,13 @@ function getAnimation(
         const wOpposition = opposition.widthAnimation * collisionPrecision;
         const yOpposition = opposition.yPos + Math.floor((opposition.widthAnimation - wOpposition) / 2);
 
-        if (isDebbuging){
-            noFill();
-            rect(xAnimation, yAnimation, wAnimation, hAnimation);
-            rect(xOpposition, yOpposition, wOpposition, hOpposition);
+        if (isDebugging){
+            debuggingInfo.pushRectDraw(xAnimation, yAnimation, wAnimation, hAnimation);
+            debuggingInfo.pushRectDraw(xOpposition, yOpposition, wOpposition, hOpposition);
         }
         return collideRectRect(
-            xAnimation,
-            yAnimation,
-            wAnimation,
-            hAnimation,
-            xOpposition,
-            yOpposition,
-            wOpposition,
-            hOpposition,
+            xAnimation, yAnimation, wAnimation, hAnimation,
+            xOpposition, yOpposition, wOpposition, hOpposition,
         );
     }
 
@@ -112,5 +113,7 @@ function getAnimation(
         isColliding,
         getName,
         isOutLeft,
-        isOutRight};
+        isOutRight,
+        resetAnimation
+    };
 }

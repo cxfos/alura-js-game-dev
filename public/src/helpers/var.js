@@ -42,32 +42,57 @@ let somPulo;
 const enemies = [];
 const collisionPrecision = 0.55;
 const gravity = 2.6;
-let isDebbuging = true;
+let isDebugging = true;
+let debuggingInfo;
 let xCenter = 0;
 let yCenter = 0;
 let framesPerSecond = 32;
 let frameCount = 0;
 let secondsCount = 0;
-let milisecondsCount = 0;
+let millisecondsCount = 0;
 let pointsCount = 0;
 let pointsPerLevel = 500;
 let pointsPerWidth = 100;
 let pxPerPoint = 0;
 let totalPxMoved = 0;
 let baseSpeed = 1500;
-let currentScene = 'playing'; // @todo - Implement the Home Scene Scene
+let currentScene = 'home';
 let currentLevel = 1;
 let levelFactor = 10;
 let showEnemy = true;
 let currentEnemyIndex = 0;
 let msCurrentEmeny = 0
 let msBetweenEnemies = 2000;
+let sceneActions = {
+    home: {
+        draw: () => home(),
+        mouse: evt => onHomeMousePressed(evt),
+        keyboard: evt => onHomeKeyPressed(evt),
+    },
+    playing: {
+        draw: () => playing(),
+        mouse: evt => onPlayingMousePressed(evt),
+        keyboard: evt => onPlayingKeyPressed(evt),
+    },
+    gameOver: {
+        draw: () => gameOver(),
+        mouse: evt => onGameOverMousePressed(evt),
+        keyboard: evt => onGameOverKeyPressed(evt),
+    },
+};
+
+/** Other Components **/
+const srcFonteInicio = 'imagens/assets/fonteTelaInicial.otf';
+let fontInicio;
+let buttonStart;
 
 function preload() {
     imgCenario = loadImage(srcCenario);
     imgGameOver = loadImage(srcGameOver);
     imgCoracao = loadImage(srcCoracao);
     imgIncio = loadImage(srcIncio);
+
+    fontInicio = loadFont(srcFonteInicio);
 
     imgLuna = loadImage(srcLuna);
     imgGota = loadImage(srcGota);
