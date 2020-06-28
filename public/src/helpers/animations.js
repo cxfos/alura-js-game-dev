@@ -12,17 +12,22 @@ function getAnimation(
     let imagemAtual = 0;
     let heightVariation = 0;
     let jumpCount = 0;
+    let blinkAnimation = false;
 
     function show() {
-        image(imagem,
-            xPos,
-            yPos,
-            widthAnimation,
-            heightAnimation,
-            imagens[imagemAtual].startX,
-            imagens[imagemAtual].startY,
-            widthSprite,
-            heightSprite);
+        if (blinkAnimation && isEven(imagemAtual)) {
+            // Don't draw the image
+        } else {
+            image(imagem,
+                xPos,
+                yPos,
+                widthAnimation,
+                heightAnimation,
+                imagens[imagemAtual].startX,
+                imagens[imagemAtual].startY,
+                widthSprite,
+                heightSprite);
+        }
 
     }
 
@@ -34,12 +39,21 @@ function getAnimation(
         return {xPos, yPos, widthAnimation, heightAnimation};
     }
 
+    function startBlink() {
+        blinkAnimation = true;
+    }
+
+    function stopBlink() {
+        blinkAnimation = false;
+    }
+
     function resetAnimation() {
         xPos = xPosition;
         yPos = yPosition;
         imagemAtual = 0;
         heightVariation = 0;
         jumpCount = 0;
+        blinkAnimation = false;
     }
 
     function animate() {
@@ -114,6 +128,8 @@ function getAnimation(
         getName,
         isOutLeft,
         isOutRight,
-        resetAnimation
+        resetAnimation,
+        startBlink,
+        stopBlink
     };
 }

@@ -8,6 +8,7 @@ function home() {
     drawTitle();
     buttonStart.showButton();
     luna.resetAnimation();
+    life.resetLife();
     enemies.forEach(enemy => enemy.resetAnimation());
 }
 

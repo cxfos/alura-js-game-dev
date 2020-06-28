@@ -18,4 +18,47 @@ function loadEnemies() {
     enemies.push(
         getAnimation(spriteTroll, 175, 175, width , height - 200, 'Birrao')
     );
+    currentEnemyMap = 0;
+    enemiesMap = [
+        {
+            index: 4,
+            speedMod: 300,
+        },
+        {
+            index: 3,
+            speedMod: 100,
+        },
+        {
+            index: 0,
+            speedMod: 100,
+        },
+        {
+            index: 4,
+            speedMod: 300,
+        },
+        {
+            index: 1,
+            speedMod: 100,
+        },
+        {
+            index: 3,
+            speedMod: 100,
+        },
+        {
+            index: 0,
+            speedMod: 100,
+        },
+        {
+            index: 2,
+            speedMod: 300,
+        },
+        {
+            index: 3,
+            speedMod: 100,
+        },
+        {
+            index: 0,
+            speedMod: 100,
+        },
+    ];
 }
